@@ -49,9 +49,19 @@ app.use("/api/v1/cart", cartRoutes);
 //     res.sendFile(path.join(buildPath, 'index.html'));
 //   });
 // }
-app.get('*', (req, res) => {
-  res.status(404).json({ message: 'Route not found' });
-});
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+
+// app.get('*', (req, res) => {
+//   res.status(404).json({ message: 'Route not found' });
+// });
 
 //PORT
 const PORT = process.env.PORT || 8080;
