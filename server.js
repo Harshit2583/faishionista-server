@@ -43,12 +43,12 @@ app.use("/api/v1/product", productRoutes);
 app.use("/api/v1/cart", cartRoutes);
 
 // Handle React routing, return all requests to React app
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    console.log('Serving index.html from:', path.join(buildPath, 'index.html'));
-    res.sendFile(path.join(buildPath, 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.get('*', (req, res) => {
+//     console.log('Serving index.html from:', path.join(buildPath, 'index.html'));
+//     res.sendFile(path.join(buildPath, 'index.html'));
+//   });
+// }
 
 //PORT
 const PORT = process.env.PORT || 8080;
